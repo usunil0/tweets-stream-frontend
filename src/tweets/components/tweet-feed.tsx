@@ -51,7 +51,7 @@ const TweetFeed = ({ service }: TweetFeedProps) => {
    </header>
 
    <div className="grid grid-cols-6 gap-4 ">
-    <div className="lg:col-start-3 lg:col-end-5">
+    <div className="lg:col-start-3 lg:col-end-5 md:col-span-6 col-span-6">
      <Input
       placeholder="Search tweet"
       value={params?.text}
