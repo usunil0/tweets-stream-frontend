@@ -18,6 +18,7 @@ export class HttpTweetService implements TweetService {
    let value = params[key as keyof Params];
 
    if (typeof value === "object") {
+    //@ts-expect-error
     value = value.join(",");
    }
 
