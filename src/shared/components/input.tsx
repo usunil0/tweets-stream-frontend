@@ -5,11 +5,19 @@ interface InputProps {
  placeholder?: string;
  onChange: (value: string) => void;
  value?: string;
+ disabled?: boolean;
 }
 
-const Input = ({ type = "text", value, onChange, placeholder }: InputProps) => {
+const Input = ({
+ type = "text",
+ value,
+ onChange,
+ placeholder,
+ disabled
+}: InputProps) => {
  return (
   <input
+   disabled={disabled}
    className="border-white w-full mt-1 rounded-md"
    type={type}
    placeholder={placeholder}

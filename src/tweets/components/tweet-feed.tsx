@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { IconMoodSad } from "tabler-icons";
 import Input from "../../shared/components/input";
 import { Params, ReliefTweet } from "../classes";
 import { HttpTweetService, TweetService } from "../service";
@@ -34,6 +35,15 @@ const TweetFeed = ({ service }: TweetFeedProps) => {
    text
   });
  };
+
+ const NoData = () => {
+  return (
+   <div className="flex flex-col items-center py-3">
+    <IconMoodSad color="#6f32be" size="48" stroke="1.5" />
+    <p className="text-black">No tweets available Currently</p>
+   </div>
+  );
+ };
  return (
   <div className="min-h-screen bg-white flex flex-col">
    <header className="bg-white shadow-sm sticky top-0 z-10 py-2">
@@ -51,6 +61,7 @@ const TweetFeed = ({ service }: TweetFeedProps) => {
       className="overflow-auto pt-2 mt-2"
       style={{ height: "calc(100vh - 80px)" }}
      >
+      {tweets?.length == 0 && <NoData />}
       {tweets?.map(tweet => {
        return <Tweet tweet={tweet} />;
       })}
