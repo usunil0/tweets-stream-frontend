@@ -7,7 +7,10 @@ const getQuery = (queryParams: { [key: string]: string | string[] }) => {
  let query: any = {};
 
  if (queryParams.text) {
-  query.referenced_text = { $regex: queryParams.text };
+  const searchText = Array.isArray(queryParams.text)
+   ? queryParams.text.join(" ")
+   : queryParams.text;
+  query.referenced_text = { $regex: new RegExp(searchText, "i") };
  }
 
  return query;
